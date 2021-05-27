@@ -1,0 +1,3 @@
+working_hard:
+  cron: "* * * * *"
+  class: "HardWorker"
