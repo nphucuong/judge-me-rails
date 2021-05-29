@@ -1,12 +1,12 @@
 require 'sidekiq'
 
 Sidekiq.configure_client do |config|
-  config.redis = { url: 'redis://localhost:6379/' }
+  config.redis = { url: ENV["REDISTOGO_URL"] }
 end
 
 Sidekiq.configure_server do |config|
   config.logger.level = Rails.logger.level
-  config.redis = { url: 'redis://localhost:6379/' }
+  config.redis = { url: ENV["REDISTOGO_URL"] }
 end
 
 # Config crontab with Sidekiq
