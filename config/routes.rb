@@ -5,4 +5,10 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:index, :create] do
   end
+
+  resources :shops, only: [:index] do
+  end
+
+  resources :products, only: [:index, :show] do
+  end
 end
