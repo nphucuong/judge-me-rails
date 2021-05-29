@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+gem 'active_model_serializers'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 gem 'slim'
@@ -41,8 +42,6 @@ group :development, :test do
   gem 'faker'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'rspec-rails'
-  gem 'rspec-sidekiq'
   gem 'rubocop-rails', require: false
 end
 
@@ -60,6 +59,8 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
+  gem 'rspec-rails'
+  gem 'rspec-sidekiq'
   gem 'webdrivers'
 end
 

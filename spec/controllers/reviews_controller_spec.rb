@@ -14,7 +14,7 @@ RSpec.describe ReviewsController, type: :controller do
           product_id: product.id,
           reviewer_name: 'Cuong',
           rating: 2.5,
-          body: 'Hope I pass Judge me'
+          body: 'Hope I pass'
         }
       end
 
@@ -22,7 +22,7 @@ RSpec.describe ReviewsController, type: :controller do
         expect(ReviewCreator).to have_enqueued_sidekiq_job(
           {
             'product_id' => product.id.to_s,
-            'body' => 'Hope I pass Judge me',
+            'body' => 'Hope I pass',
             'rating' => '2.5',
             'reviewer_name' => 'Cuong'
           }
@@ -35,7 +35,7 @@ RSpec.describe ReviewsController, type: :controller do
     before do
       params = {
         'product_id' => product.id.to_s,
-        'body' => 'Hope I pass Judge me',
+        'body' => 'Hope I pass',
         'rating' => '2.5',
         'reviewer_name' => 'Cuong'
       }
