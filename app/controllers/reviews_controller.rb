@@ -5,14 +5,13 @@ class ReviewsController < ApplicationController
     products = Product.where(id: params[:product_ids]).sort_by(&:created_at)
     return if products.blank?
 
-    params[:per_page] ||= 10
-    per_page = params[:per_page].to_i
-    offset = params[:page].to_i * per_page
-
+    per_page = (params[:per_page] ||= 10).to_i
+    page = params[:page].to_i + 1
     data = []
+
     products.each do |product|
-      reviews = product.reviews.sort_by(&:created_at)[offset..(offset + per_page)]
-      data << { product: product, reviews: reviews }
+      reviews = product.reviews.order(:created_at).page(page).per(per_page)
+      data << { product: product, reviews: reviews, total_reviews: reviews.total_count }
     end
 
     render json: { records: data, success: true }

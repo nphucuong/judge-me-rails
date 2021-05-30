@@ -18,6 +18,15 @@ RSpec::Sidekiq.configure do |config|
   # Warn when jobs are not enqueued to Redis but to a job array
   config.warn_when_jobs_not_processed_by_sidekiq = true # default => true
 end
+
+RSpec::Matchers.define :match_response_schema do |schema|
+  match do |response|
+    schema_directory = "#{Dir.pwd}/spec/support/schemas"
+    schema_path = "#{schema_directory}/#{schema}.json"
+    JSON::Validator.validate!(schema_path, response.body, strict: false)
+  end
+end
+
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors)

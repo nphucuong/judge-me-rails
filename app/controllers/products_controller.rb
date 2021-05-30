@@ -1,12 +1,12 @@
 class ProductsController < ApplicationController
   def index
-    if shop = Shop.find_by(id: params[:shop_id])
-      params[:per_page] ||= 10
-      per_page = params[:per_page].to_i
-      offset = params[:page].to_i * per_page
-      products = shop.products.sort_by(&:created_at)[offset..(offset + per_page)]
-      render json: { records: products, success: true }
-    end
+    shop = Shop.find_by(id: params[:shop_id])
+    return render json: { success: false }, status: 400 if shop.nil?
+
+    per_page = (params[:per_page] ||= 10).to_i
+    page = params[:page].to_i + 1
+    products = shop.products.order(:created_at).page(page).per(per_page)
+    render json: { records: products, total: products.total_count }
   end
 
   def show
