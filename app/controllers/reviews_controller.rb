@@ -2,7 +2,8 @@ class ReviewsController < ApplicationController
   DEFAULT_TAGS = ['default']
 
   def index
-    products = Product.where(id: params[:product_ids]).sort_by(&:created_at)
+    # Elimiate N + 1 with includes review
+    products = Product.where(id: params[:product_ids]).includes(:reviews).order(:created_at)
     return if products.blank?
 
     per_page = (params[:per_page] ||= 10).to_i
