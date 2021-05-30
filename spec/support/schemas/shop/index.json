@@ -1,0 +1,7 @@
+{
+  "type": "array",
+  "additionalProperties": false,
+  "properties": {
+    "items": { "$ref": "shop.json" }
+  }
+}
