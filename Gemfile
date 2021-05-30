@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'active_model_serializers'
+gem 'kaminari'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 gem 'slim'
@@ -59,8 +60,10 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
+  gem 'json-schema'
   gem 'rspec-rails'
   gem 'rspec-sidekiq'
+  gem 'shoulda-matchers'
   gem 'webdrivers'
 end
 
