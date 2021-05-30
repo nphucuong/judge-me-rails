@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   end
 
   resources :shops, only: [:index] do
+    member do
+      get :report
+    end
   end
 
   resources :products, only: [:index, :show] do

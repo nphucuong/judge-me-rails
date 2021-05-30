@@ -5,8 +5,9 @@ I considered a lot about what I should choose Rails API-only or Rails view befor
 ## 1. Challenges
 
 First of all, I need to redesign all of endpoints `Review`, `Product`, and `Shop` to have the best performance and easily scale-up later.
-
 I put file `.env.example` in directory, you can change it into `.env` to run it on local.
+
+Assume that monthly avarage rating of a shop is equal to avarage of all of products. I've only finished the endpoint to return shop report. Not the whole feature.
 
 ### Development
 
